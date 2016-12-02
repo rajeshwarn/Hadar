@@ -7,20 +7,28 @@
 //
 
 
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hadar.Game
 {
+    /// <summary>
+    /// Interface: Represents any message-related entity inside a DarkOrbit client.
+    /// </summary>
     internal class Interface
     {
+        /// <summary>
+        /// Class: Name of the decompiled class this entity refers to.
+        /// </summary>
         internal string Class;
+
+        /// <summary>
+        /// OPCode: Name of the class this entity refers to.
+        /// </summary>
         internal string OPCode;
 
+        /// <summary>
+        /// Lines: Content of the decompiled class.
+        /// </summary>
         internal string[] Lines;
 
         internal Interface(FileInfo Class)

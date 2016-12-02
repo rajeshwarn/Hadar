@@ -7,16 +7,23 @@
 //
 
 
-using System;
 using System.Diagnostics;
 using System.IO;
 
 namespace Hadar.Decompilation
 {
+    /// <summary>
+    /// Helper: Utilities used to decompile/disassemble Sockwave flash files.
+    /// </summary>
     internal static class Helper
     {
         private static readonly string DIRECTORY = Program.DIRECTORY;
 
+        /// <summary>
+        /// Decompile a Shockwave Flash file using RABCDasm. 
+        /// </summary>
+        /// <param name="SWF">Name of the Sockwave Flash file to decompile.</param>
+        /// <returns>Returns a boolean value representing the result of the operation.</returns>
         internal static bool Decompile(string SWF)
         {
             var Source = SWF.Substring(0, SWF.LastIndexOf('.'));
@@ -26,11 +33,16 @@ namespace Hadar.Decompilation
             return File.Exists(Path.Combine(DIRECTORY, string.Format("{0}-0.abc", Source)));
         }
 
-        private static void Execute(string BAT, string Argument)
+        /// <summary>
+        /// Execute a Batch file with specified arguments.
+        /// </summary>
+        /// <param name="BAT">Name of the Batch file.</param>
+        /// <param name="Arguments">Arguments to pass to the Batch file.</param>
+        private static void Execute(string BAT, string Arguments)
         {
             if (File.Exists(Path.Combine(DIRECTORY, BAT)))
             {
-                var Details = new ProcessStartInfo(BAT, Argument);
+                var Details = new ProcessStartInfo(BAT, Arguments);
                 Details.WorkingDirectory = DIRECTORY;
 
                 Process Process = Process.Start(Details);

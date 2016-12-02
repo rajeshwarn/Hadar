@@ -7,23 +7,39 @@
 //
 
 
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hadar.Game
 {
+    /// <summary>
+    /// Commands: Represents a Game Command inside a DarkOrbit client.
+    /// </summary>
     internal class Command : Interface
     {
+        /// <summary>
+        /// Invoker: Numerical identifier of the command.
+        /// </summary>
         private int Invoker;
 
+        /// <summary>
+        /// ReadFunction: Name of the function used to read data.
+        /// </summary>
         private string ReadFunction;
+
+        /// <summary>
+        /// WriteFunction: Name of the function used to write data.
+        /// </summary>
         private string WriteFunction;
 
+        /// <summary>
+        /// OnRead: List of reading operations.
+        /// </summary>
         private List<string> OnRead;
+
+        /// <summary>
+        /// OnWrite: List of writing operations.
+        /// </summary>
         private List<string> OnWrite;
 
         internal Command(FileInfo Class) : base(Class)

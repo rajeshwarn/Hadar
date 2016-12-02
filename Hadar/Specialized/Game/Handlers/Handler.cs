@@ -7,15 +7,13 @@
 //
 
 
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hadar.Game
 {
+    /// <summary>
+    /// Handler: Represents a Message Handler inside a DarkOrbit client.
+    /// </summary>
     internal class Handler : Interface
     {
         internal Handler(FileInfo Class) : base(Class)

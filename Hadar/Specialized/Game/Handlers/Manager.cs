@@ -10,14 +10,17 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hadar.Game.Handlers
 {
+    /// <summary>
+    /// Manager: Represents an Handlers Manager inside a DarkOrbit client.
+    /// </summary>
     internal class Manager : Interface
     {
+        /// <summary>
+        /// Handlers: Collection of message handlers.
+        /// </summary>
         internal Dictionary<string, Handler> Handlers;
 
         public Manager(FileInfo Class) : base(Class)

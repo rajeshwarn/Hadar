@@ -7,18 +7,25 @@
 //
 
 
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace Hadar.Game
 {
+    /// <summary>
+    /// Build: Represents a DarkOrbit game build.
+    /// </summary>
     internal class Build
     {
+        /// <summary>
+        /// Commands: Entity which manages game commands.
+        /// </summary>
         private Commands.Manager Commands;
+
+        /// <summary>
+        /// Handlers: Entity which manages game handlers.
+        /// </summary>
         private Handlers.Manager Handlers;
 
         internal Build(Commands.Manager Commands, Handlers.Manager Handlers)
@@ -27,6 +34,11 @@ namespace Hadar.Game
             this.Handlers = Handlers;
         }
 
+        /// <summary>
+        /// Save an XML-representation of current game messages
+        /// inside a specified destination file.
+        /// </summary>
+        /// <param name="Destination">The name of the destination file.</param>
         internal void Save(string Destination)
         {
             using (var Writer = new XmlTextWriter(Destination, Encoding.Default))

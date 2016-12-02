@@ -7,18 +7,25 @@
 //
 
 
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hadar.Game.Commands
 {
+    /// <summary>
+    /// Manager: Represents a Commands Manager inside a DarkOrbit client.
+    /// </summary>
     internal class Manager : Interface
     {
+        /// <summary>
+        /// Events: Collection of relationships between commands-related entities.
+        /// </summary>
         private Dictionary<int, string> Events;
+
+        /// <summary>
+        /// Commands: Collection of game commands.
+        /// </summary>
         internal Dictionary<int, Command> Commands { get; private set; }
 
         public Manager(FileInfo Class) : base(Class)
@@ -46,6 +53,11 @@ namespace Hadar.Game.Commands
             }
         }
 
+        /// <summary>
+        /// Build the final commands list
+        /// starting from relationship collections.
+        /// </summary>
+        /// <param name="Commands">The list of commands to get relationships for.</param>
         internal void SetCommands(List<Command> Commands)
         {
             foreach (var Event in Events)
