@@ -64,15 +64,13 @@ namespace Hadar.Game
 
                 Writer.WriteWhitespace("\n");
 
-                foreach (var Handler in Handlers.Handlers.OrderBy(x => x.Key))
+                foreach (var Handler in Handlers.Handlers.ToDictionary(x => Commands.Commands.FirstOrDefault(y => y.Value.Class == x.Key).Key, x => x.Value).OrderBy(x => x.Key))
                 {
-                    var Invoker = Commands.Commands.FirstOrDefault(x => x.Value.Class == Handler.Key);
-
                     Writer.WriteWhitespace("	");
 
                     Writer.WriteStartElement("outgoing");
 
-                    Writer.WriteAttributeString("id", Invoker.Key.ToString());
+                    Writer.WriteAttributeString("id", Handler.Key.ToString());
                     Writer.WriteAttributeString("class", Handler.Value.OPCode);
 
                     Writer.WriteEndElement();
