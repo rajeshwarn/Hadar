@@ -1,5 +1,5 @@
 ﻿//
-//  File Name: program.cs
+//  File Name: Program.cs
 //  Project Name: Hadar
 //
 //  Created by Alexandro Luongo on 2/12/2016.
@@ -15,78 +15,78 @@ using System.Linq;
 
 namespace Hadar
 {
-	internal class Program
-	{
+    internal class Program
+    {
         internal static Decompilation.Session Session;
 
-		internal static readonly string DIRECTORY = "Hacking";
+        internal static readonly string DIRECTORY = "Hacking";
 
-		private static void Init()
-		{
-			Console.Title = "Hadar - DarkOrbit Cracking Utility";
+        private static void Init()
+        {
+            Console.Title = "Hadar - DarkOrbit Cracking Utility";
 
-			Console.WriteLine("Hadar - DarkOrbit Cracking Utility");
-			Console.WriteLine("Copyright (C) 2012/2016 - W00dL3cs (Alexandro Luongo)");
-			Console.WriteLine();
+            Console.WriteLine("Hadar - DarkOrbit Cracking Utility");
+            Console.WriteLine("Copyright (C) 2012/2016 - W00dL3cs (Alexandro Luongo)");
+            Console.WriteLine();
 
-			Directory.CreateDirectory(DIRECTORY);
-		}
+            Directory.CreateDirectory(DIRECTORY);
+        }
 
-		static void Main(string[] args)
-		{
-			try
-			{
-				Init();
+        static void Main(string[] args)
+        {
+            try
+            {
+                Init();
 
-				var SWF = GetSWF();
+                var SWF = GetSWF();
 
-				Session = Decompile(SWF);
+                Session = Decompile(SWF);
 
                 var Build = Handle(Session);
 
                 Export(Build, "Protocol.xml");
 
                 Clear(Session);
-			}
-			catch (Exception e)
-			{
-				Console.WriteLine("Fatal exception occurred!");
-				Console.WriteLine(string.Format("Error message: {0}", e.Message));
-				Console.WriteLine();
-			}
-			finally
-			{
-				Terminate();
-			}
-		}
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Fatal exception occurred!");
+                Console.WriteLine(string.Format("Error message: {0}", e.Message));
+                Console.WriteLine();
+            }
+            finally
+            {
+                Terminate();
+            }
+        }
 
-		private static FileInfo GetSWF()
-		{
-			Console.Write("Name of the SWF to hack: ");
+        private static FileInfo GetSWF()
+        {
+            Console.Write("Name of the SWF to hack: ");
 
-			string Source = Console.ReadLine();
+            string Source = Console.ReadLine();
 
-			Console.WriteLine();
-			Console.WriteLine("Searching for SWF...");
+            Console.WriteLine();
+            Console.WriteLine("Searching for SWF...");
 
-			if (!File.Exists(Path.Combine(DIRECTORY, Source)))
-			{
-				throw new FileNotFoundException(string.Format("Cannot find file \"{0}\" inside \"{1}\" folder!", Source, DIRECTORY));
-			}
+            if (!File.Exists(Path.Combine(DIRECTORY, Source)))
+            {
+                throw new FileNotFoundException(string.Format("Cannot find file \"{0}\" inside \"{1}\" folder!", Source, DIRECTORY));
+            }
 
             Console.WriteLine("SWF found!");
             Console.WriteLine();
 
-			return new FileInfo(string.Format(@"{0}/{1}", DIRECTORY, Source));
-		}
+            return new FileInfo(string.Format(@"{0}/{1}", DIRECTORY, Source));
+        }
 
-		private static Decompilation.Session Decompile(FileInfo SWF)
-		{
-			var Session = new Decompilation.Session(SWF);
+        private static Decompilation.Session Decompile(FileInfo SWF)
+        {
+            var Session = new Decompilation.Session(SWF);
 
             Console.WriteLine("Performing decompilation...");
 
-			if (!Session.Decompile())
+            if (!Session.Decompile())
             {
                 throw new Exception(string.Format("Cannot decompile file \"{0}\" !", SWF.Name));
             }
@@ -95,7 +95,7 @@ namespace Hadar
             Console.WriteLine();
 
             return Session;
-		}
+        }
 
         private static Build Handle(Decompilation.Session Session)
         {
@@ -158,12 +158,12 @@ namespace Hadar
             Console.WriteLine();
         }
 
-		private static void Terminate()
-		{
-			Console.WriteLine("Press a key to terminate.");
-			Console.ReadKey();
+        private static void Terminate()
+        {
+            Console.WriteLine("Press a key to terminate.");
+            Console.ReadKey();
 
-			Environment.Exit(0);
-		}
-	}
+            Environment.Exit(0);
+        }
+    }
 }

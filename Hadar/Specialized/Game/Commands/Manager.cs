@@ -20,7 +20,7 @@ namespace Hadar.Game.Commands
     {
         private Dictionary<int, string> Events;
         internal Dictionary<int, Command> Commands { get; private set; }
-        
+
         public Manager(FileInfo Class) : base(Class)
         {
             Events = new Dictionary<int, string>();

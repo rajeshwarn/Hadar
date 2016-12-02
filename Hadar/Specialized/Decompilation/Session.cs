@@ -14,28 +14,28 @@ using System.Linq;
 
 namespace Hadar.Decompilation
 {
-	internal class Session
-	{
-		private FileInfo SWF;
+    internal class Session
+    {
+        private FileInfo SWF;
         internal string Source;
 
         internal List<FileInfo> Classes;
 
-		internal Session(FileInfo SWF)
-		{
-			this.SWF = SWF;
+        internal Session(FileInfo SWF)
+        {
+            this.SWF = SWF;
 
             this.Source = SWF.Name.Substring(0, SWF.Name.LastIndexOf('.'));
         }
 
         internal bool Decompile()
-		{
-			var Result = Helper.Decompile(SWF.Name);
+        {
+            var Result = Helper.Decompile(SWF.Name);
 
             Classes = SWF.Directory.GetFiles("*.class.asasm", SearchOption.AllDirectories).ToList();
 
             return Result;
-		}
+        }
 
         internal Game.Interface ParseCommand(FileInfo Class)
         {
@@ -75,5 +75,5 @@ namespace Hadar.Decompilation
                 Directory.Delete(Folder, true);
             }
         }
-	}
+    }
 }

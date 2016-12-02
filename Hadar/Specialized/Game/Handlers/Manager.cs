@@ -1,5 +1,5 @@
 ﻿//
-//  File Name: manager.cs
+//  File Name: Manager.cs
 //  Project Name: Hadar
 //
 //  Created by Alexandro Luongo on 2/12/2016.
