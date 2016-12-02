@@ -15,17 +15,15 @@ namespace Hadar.Decompilation
 {
 	internal static class Helper
 	{
-        internal static string SOURCE;
-
         private static readonly string DIRECTORY = Program.DIRECTORY;
 
         internal static bool Decompile(string SWF)
 		{
-            SOURCE = SWF.Substring(0, SWF.LastIndexOf('.'));
+            var Source = SWF.Substring(0, SWF.LastIndexOf('.'));
 
-            Execute("Decompile.bat", SOURCE);
+            Execute("Decompile.bat", Source);
 
-            return File.Exists(Path.Combine(DIRECTORY, string.Format("{0}-0.abc", SOURCE)));
+            return File.Exists(Path.Combine(DIRECTORY, string.Format("{0}-0.abc", Source)));
         }
 
 		private static void Execute(string BAT, string Argument)

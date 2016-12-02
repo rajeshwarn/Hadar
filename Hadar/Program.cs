@@ -17,6 +17,8 @@ namespace Hadar
 {
 	internal class Program
 	{
+        internal static Decompilation.Session Session;
+
 		internal static readonly string DIRECTORY = "Hacking";
 
 		private static void Init()
@@ -38,11 +40,13 @@ namespace Hadar
 
 				var SWF = GetSWF();
 
-				var Session = Decompile(SWF);
+				Session = Decompile(SWF);
 
                 var Build = Handle(Session);
 
                 Export(Build, "Protocol.xml");
+
+                Clear(Session);
 			}
 			catch (Exception e)
 			{
@@ -143,6 +147,15 @@ namespace Hadar
             Console.WriteLine(string.Format("Exporting game messages to \"{0}\"...", Destination));
 
             Build.Save(Destination);
+        }
+
+        private static void Clear(Decompilation.Session Session)
+        {
+            Console.WriteLine("Cleaning trash...");
+
+            Session.Clear();
+
+            Console.WriteLine();
         }
 
 		private static void Terminate()

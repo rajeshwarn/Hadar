@@ -44,7 +44,7 @@ namespace Hadar.Game.Handlers
 
                             Name = Data[3];
 
-                            Handlers.Add(Reference, new Handler(Path.Combine(Program.DIRECTORY, string.Format("{0}-1", Decompilation.Helper.SOURCE), string.Format("{0}", Data[1].Replace(".", "")), string.Format("{0}.class.asasm", Name))));
+                            Handlers.Add(Reference, new Handler(Path.Combine(Program.DIRECTORY, string.Format("{0}-1", Program.Session.Source), string.Format("{0}", Data[1].Replace(".", "")), string.Format("{0}.class.asasm", Name))));
                         }
                         catch (Exception e)
                         {

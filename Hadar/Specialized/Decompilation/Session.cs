@@ -17,14 +17,18 @@ namespace Hadar.Decompilation
 	internal class Session
 	{
 		private FileInfo SWF;
+        internal string Source;
+
         internal List<FileInfo> Classes;
 
 		internal Session(FileInfo SWF)
 		{
 			this.SWF = SWF;
-		}
 
-		internal bool Decompile()
+            this.Source = SWF.Name.Substring(0, SWF.Name.LastIndexOf('.'));
+        }
+
+        internal bool Decompile()
 		{
 			var Result = Helper.Decompile(SWF.Name);
 
@@ -57,6 +61,19 @@ namespace Hadar.Decompilation
             }
 
             return new Game.Handler(Class);
+        }
+
+        internal void Clear()
+        {
+            foreach (var ABC in Directory.GetFiles(Program.DIRECTORY, "*.abc"))
+            {
+                File.Delete(ABC);
+            }
+
+            foreach (var Folder in Directory.GetDirectories(Program.DIRECTORY, string.Format("{0}-*", Source)))
+            {
+                Directory.Delete(Folder, true);
+            }
         }
 	}
 }
