@@ -23,7 +23,7 @@ namespace Hadar
         internal static Decompilation.Session Session;
 
         /// <summary>
-        /// DIRECTORY: Hadar hacking directory.
+        /// DIRECTORY: Name of the directory used for decompilation operations.
         /// </summary>
         internal static readonly string DIRECTORY = "Hacking";
 

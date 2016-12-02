@@ -17,6 +17,9 @@ namespace Hadar.Decompilation
     /// </summary>
     internal static class Helper
     {
+        /// <summary>
+        /// DIRECTORY: Name of the directory used for decompilation operations.
+        /// </summary>
         private static readonly string DIRECTORY = Program.DIRECTORY;
 
         /// <summary>
